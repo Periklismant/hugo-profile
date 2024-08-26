@@ -20,7 +20,14 @@
     <div class="container bg-transparent">
         <h3 class="text-center">{{ .Site.Params.all_publications.title | default "All Publications" }}</h3>
         <br>
+        {{ $prevDate := 0 }}
         {{ range $index, $element := .Site.Params.publications.items }}
+        {{ $date := .date }}
+        {{ $authorNo := len .authors }}
+        {{ if not (eq $date $prevDate) }}
+            <h4>{{ $date }}</h4>
+            {{ $prevDate = $date }}
+        {{ end }}
         <p class="pub {{ .venue_type }} justify-content-center px-5 px-md-5">
             {{ $authorNo := len .authors }}
             {{ range $authorIndex, $author := .authors }}
@@ -40,7 +47,7 @@
             {{ end }}
             <b>{{ .title }}</b>.
             <br>
-            In <em>{{ .venue }}</em> ({{ .acronym }}). {{ if .volume }}{{ .volume }}:{{ end }}{{ .first_page }}&ndash;{{ .last_page }}, {{ .date }}. 
+            In <em>{{ .venue }}</em> ({{ .acronym }}). {{if or .volume .first_page }}{{ if .volume }}{{ .volume }}:{{ end }}{{ .first_page }}&ndash;{{ .last_page }},{{ end }} {{ .date }}. 
             {{ if .pdf }}<a href="{{ .pdf }}" target="_blank" class="button PDF">PDF</a>{{ end }}
             {{ if .slides }}<a href="{{ .slides }}" target="_blank" class="button SLIDES">Slides</a>{{ end }}
             {{ if .video }}<a href="{{ .video }}" target="_blank" class="button VIDEO">Video</a>{{ end }}

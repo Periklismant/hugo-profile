@@ -4,9 +4,15 @@
     <div class="container bg-transparent">
         <h3 class="text-center">{{ .Site.Params.all_publications.title | default "All Publications" }}</h3>
         <br>
+        {{ $prevDate := 0 }}
         {{ range $index, $element := .Site.Params.publications.items }}
         <p class="pub {{ .venue_type }} justify-content-center px-5 px-md-5">
+            {{ $date := .date }}
             {{ $authorNo := len .authors }}
+            {{ if gt $date $prevDate }}
+                <h4>{{ .date }}</h4>
+                {{ $prevDate := $date }}
+            {{ end }}
             {{ range $authorIndex, $author := .authors }}
                 {{ if not (eq (add $authorIndex 1) $authorNo) }}
                      {{ if eq . "Periklis Mantenoglou" }}
@@ -39,5 +45,4 @@
     </div>
 </section>
 {{ end }}
-
 
