@@ -2,9 +2,9 @@
 {{ if .Site.Params.publications.enable | default false }}
 <section id="publications" class="py-0 py-sm-5">
     <div class="container bg-transparent">
-        <h3 class="text-center">{{ .Site.Params.publications.title | default "Selected Publications" }}</h3>
+        <h3 class="text-center">{{ .Site.Params.all_publications.title | default "All Publications" }}</h3>
         <br>
-        {{ range $index, $element := where .Site.Params.publications.items ".selected" "true" }}
+        {{ range $index, $element := .Site.Params.publications.items }}
         <p class="pub {{ .venue_type }} justify-content-center px-5 px-md-5">
             {{ $authorNo := len .authors }}
             {{ range $authorIndex, $author := .authors }}
@@ -34,7 +34,7 @@
         </p>
         {{ end }}
         <div style="text-align:center">
-        <a href="publications_full" rel="noopener" class="center btn btn-light btn-lg" style="font-size:16px">Click here for the complete list</a>
+        <a href="publications" rel="noopener" class="center btn btn-light btn-lg" style="font-size:16px">Click here for the complete list</a>
         </div>
     </div>
 </section>

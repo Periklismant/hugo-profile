@@ -1,10 +1,26 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
+<!-- <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all"> -->
+{{ if .Params.viewer | default true }}
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/publications.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/viewer/viewer.min.css">
+<script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
+{{ end }}
+
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
 <link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/publications.css">
 {{ if .Site.Params.publications.enable | default false }}
 <section id="publications" class="py-0 py-sm-5">
     <div class="container bg-transparent">
-        <h3 class="text-center">{{ .Site.Params.publications.title | default "Selected Publications" }}</h3>
+        <h3 class="text-center">{{ .Site.Params.all_publications.title | default "All Publications" }}</h3>
         <br>
-        {{ range $index, $element := where .Site.Params.publications.items ".selected" "true" }}
+        {{ range $index, $element := .Site.Params.publications.items }}
         <p class="pub {{ .venue_type }} justify-content-center px-5 px-md-5">
             {{ $authorNo := len .authors }}
             {{ range $authorIndex, $author := .authors }}
@@ -33,11 +49,18 @@
             {{ if .doi }}<a href="{{ .doi }}" target="_blank" class="button DOI">DOI</a>{{ end }}
         </p>
         {{ end }}
-        <div style="text-align:center">
-        <a href="publications_full" rel="noopener" class="center btn btn-light btn-lg" style="font-size:16px">Click here for the complete list</a>
-        </div>
     </div>
 </section>
 {{ end }}
 
+{{ if .Params.viewer | default true }}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var viewer = new Viewer(document.getElementById('list-page'), {
+            ...{{ .Params.viewerOptions }}
+        });
+    });
+</script>
+{{ end }}
 
+{{ end }}
