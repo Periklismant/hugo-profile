@@ -3,6 +3,7 @@
 <!-- <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all"> -->
 {{ if .Params.viewer | default true }}
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/publications.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/button.css">
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/viewer/viewer.min.css">
 <script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
 {{ end }}
@@ -48,12 +49,12 @@
             <b>{{ .title }}</b>.
             <br>
             In <em>{{ .venue }}</em> ({{ .acronym }}). {{if or .volume .first_page }}{{ if .volume }}{{ .volume }}:{{ end }}{{ .first_page }}&ndash;{{ .last_page }},{{ end }} {{ .date }}. 
-            {{ if .pdf }}<a href="{{ .pdf }}" target="_blank" class="button PDF">PDF</a>{{ end }}
-            {{ if .slides }}<a href="{{ .slides }}" target="_blank" class="button SLIDES">Slides</a>{{ end }}
-            {{ if .video }}<a href="{{ .video }}" target="_blank" class="button VIDEO">Video</a>{{ end }}
-            {{ if .code }}<a href="{{ .code }}" target="_blank" class="button CODE">Code</a>{{ end }}
-            {{ if .bib }}<a href="{{ .bib }}" target="_blank" class="button BIB">BibTeX</a>{{ end }}
-            {{ if .doi }}<a href="{{ .doi }}" target="_blank" class="button DOI">DOI</a>{{ end }}
+            {{ if .pdf }}<a href="{{ .pdf }}" target="_blank" class="pub_button PDF">PDF</a>{{ end }}
+            {{ if .slides }}<a href="{{ .slides }}" target="_blank" class="pub_button SLIDES">Slides</a>{{ end }}
+            {{ if .video }}<a href="{{ .video }}" target="_blank" class="pub_button VIDEO">Video</a>{{ end }}
+            {{ if .code }}<a href="{{ .code }}" target="_blank" class="pub_button CODE">Code</a>{{ end }}
+            {{ if .bib }}<a href="{{ .bib }}" target="_blank" class="pub_button BIB">BibTeX</a>{{ end }}
+            {{ if .doi }}<a href="{{ .doi }}" target="_blank" class="pub_button DOI">DOI</a>{{ end }}
         </p>
         {{ end }}
     </div>
