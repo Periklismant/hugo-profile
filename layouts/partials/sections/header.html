@@ -111,6 +111,15 @@
                     </li>
                     {{ end }}
 
+                    {{ if and (.Site.Params.presentations.enable | default false) (not (.Site.Params.navbar.menus.disablePresentations | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#presentations"
+                            aria-label="presentations">
+                            {{ .Site.Params.presentations.title | default "Presentations" }}
+                        </a>
+                    </li>
+                    {{ end }}
+
                     {{ if and (.Site.Params.achievements.enable | default false) (not (.Site.Params.navbar.menus.disableAchievements | default false)) }}
                     <li class="nav-item navbar-text">
                         <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#achievements"

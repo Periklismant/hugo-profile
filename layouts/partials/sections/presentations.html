@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/presentations.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/button.css">
+{{ if .Site.Params.publications.enable | default false }}
+<section id="presentations" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.presentations.title | default "Presentations" }}</h3>
+        <br>
+        {{ range $index, $element := .Site.Params.presentations.items }}
+        <p class="pub {{ .venue_type }} justify-content-center px-sm-5 px-md-5 px-lg-5">
+        <b>{{ .title }}</b> In <em>{{ .venue }}</em>. {{ .type }}{{if eq (len .presenters) 1 }}.{{ else }}
+        by
+        {{ $presenterNo := len .presenters }}
+        {{ range $presenterIndex, $presenter := .presenters }}
+            {{ if not (eq (add $presenterIndex 1) $presenterNo) }}
+                 {{ if eq . "Periklis Mantenoglou" }}
+                    <u>{{ . }}</u>,
+                 {{ else }}
+                    {{ . }},
+                 {{ end }}
+            {{ else }}
+                 {{ if eq . "Periklis Mantenoglou" }}
+                    <u>{{ . }}</u>.
+                 {{ else }}
+                    {{ . }}
+                 {{ end }}
+            {{ end }}
+        {{ end }}
+        {{ end }}
+        {{ .date }}.
+            {{ if .slides }}<a href="{{ .slides }}" target="_blank" class="pub_button SLIDES">Slides</a>{{ end }}
+            {{ if .poster }}<a href="{{ .poster }}" target="_blank" class="pub_button POSTER">Poster</a>{{ end }}
+        </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+
