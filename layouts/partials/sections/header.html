@@ -120,11 +120,38 @@
                     </li>
                     {{ end }}
 
-                    {{ if and (.Site.Params.achievements.enable | default false) (not (.Site.Params.navbar.menus.disableAchievements | default false)) }}
+                    {{ if and (.Site.Params.rdprojects.enable | default false) (not (.Site.Params.navbar.menus.disableRdprojects | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#achievements"
-                            aria-label="achievements">
-                            {{ .Site.Params.achievements.title | default "Achievements" }}
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#rdprojects"
+                            aria-label="rdprojects">
+                            {{ .Site.Params.rdprojects.title | default "R&D Projects" }}
+                        </a>
+                    </li>
+                    {{ end }}
+
+                    {{ if and (.Site.Params.seminars.enable | default false) (not (.Site.Params.navbar.menus.disableSeminars | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#seminars"
+                            aria-label="seminars">
+                            {{ .Site.Params.seminars.title | default "Seminars" }}
+                        </a>
+                    </li>
+                    {{ end }}
+
+                    {{ if and (.Site.Params.scholarships.enable | default false) (not (.Site.Params.navbar.menus.disableScholarships | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#scholarships"
+                            aria-label="scholarships">
+                            {{ .Site.Params.scholarships.title | default "Scholarships" }}
+                        </a>
+                    </li>
+                    {{ end }}
+
+                    {{ if and (.Site.Params.software.enable | default false) (not (.Site.Params.navbar.menus.disableSoftware | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#software"
+                            aria-label="software">
+                            {{ .Site.Params.software.title | default "Software" }}
                         </a>
                     </li>
                     {{ end }}

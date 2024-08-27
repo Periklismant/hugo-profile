@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/rdprojects.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/button.css">
+{{ if .Site.Params.rdprojects.enable | default false }}
+<section id="rdprojects" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.rdprojects.title | default "R&D Projects" }}</h3>
+        <br>
+        {{ range .Site.Params.rdprojects.items }}
+        <p class="rdp justify-content-center px-sm-5 px-md-5 px-lg-5">
+        <b>{{ .title }}</b>: {{ .content }}
+        {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
+        </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+

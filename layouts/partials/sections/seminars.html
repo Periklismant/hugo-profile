@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/seminars.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/button.css">
+{{ if .Site.Params.seminars.enable | default false }}
+<section id="seminars" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.seminars.title | default "Seminars" }}</h3>
+        <br>
+        {{ range .Site.Params.seminars.items }}
+        <p class="rdp justify-content-center px-sm-5 px-md-5 px-lg-5">
+        <b>{{ .title }}</b>: {{ .content }}
+        {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
+        </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+

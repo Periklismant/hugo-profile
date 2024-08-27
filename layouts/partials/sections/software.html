@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/software.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/button.css">
+{{ if .Site.Params.software.enable | default false }}
+<section id="software" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.software.title | default "Software" }}</h3>
+        <br>
+        {{ range .Site.Params.software.items }}
+        <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
+        <b>{{ .title }}</b>: {{ .content }}
+        <a href="{{ .link }}" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+        </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+
