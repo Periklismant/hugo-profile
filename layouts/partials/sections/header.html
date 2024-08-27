@@ -129,6 +129,16 @@
                     </li>
                     {{ end }}
 
+                    {{ if and (.Site.Params.teaching.enable | default false) (not (.Site.Params.navbar.menus.disableTeaching | default false)) }}
+                    <li class="nav-item navbar-text">
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#teaching"
+                            aria-label="teaching">
+                            Teaching
+                        </a>
+                    </li>
+                    {{ end }}
+
+
                     {{ if and (.Site.Params.seminars.enable | default false) (not (.Site.Params.navbar.menus.disableSeminars | default false)) }}
                     <li class="nav-item navbar-text">
                         <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#seminars"

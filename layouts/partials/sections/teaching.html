@@ -1,0 +1,23 @@
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/teaching.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/button.css">
+{{ if .Site.Params.teaching.enable | default false }}
+<section id="teaching" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.teaching.title | default "Teaching" }}</h3>
+        <br>
+        {{ $prevDate := 0 }}
+        {{ range .Site.Params.teaching.items }}
+            {{ $date := .date }}
+            {{ if not (eq $date $prevDate) }}
+                <h4>{{ $date }}</h4>
+                {{ $prevDate = $date }}
+            {{ end }}
+            <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
+            {{ .level }} on <b>{{ .title }}</b>.
+            </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+
