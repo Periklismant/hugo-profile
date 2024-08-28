@@ -15,7 +15,7 @@
             <p class="pub justify-content-center px-sm-5 px-md-5 px-lg-5">
             <b>{{ .title }}</b>
             <br>
-            In <em>{{ .venue }}</em>. {{ .type }}{{if eq (len .presenters) 1 }}.{{ else }}
+            In <em>{{ .venue }}</em>. <font color="#008888">{{ .type }}</font>{{if eq (len .presenters) 1 }}.{{ else }}
                 by
                 {{ $presenterNo := len .presenters }}
                 {{ range $presenterIndex, $presenter := .presenters }}
