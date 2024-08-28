@@ -14,6 +14,7 @@
             {{ end }}
             <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
             {{ .level }} on <b>{{ .title }}</b>.
+            {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
             </p>
         {{ end }}
     </div>
