@@ -1,0 +1,159 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
+<!-- <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all"> -->
+{{ if .Params.viewer | default true }}
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/education.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/experience.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/button.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/viewer/viewer.min.css">
+<script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
+{{ end }}
+
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/education.css">
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/experience.css">
+
+{{ if .Site.Params.experience.enable | default false }}
+<section id="experience" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.experience.title | default "Experience" }}</h3>
+        <div class="row justify-content-center py-5">
+            {{ $indexMenu := .Site.Params.experience.index }}
+            {{ range $index, $element := .Site.Params.experience.items }}
+            <div class="col-12 p-0">
+                <div class="row row align-items-center justify-content-center m-1 mb-4">
+                    {{ if $indexMenu }}
+                    <div class="col-md-1 text-center me-2 p-0 d-none d-md-block">
+                        <div class="py-2">
+                            <span class="index shadow-lg">
+                                {{ add $index 1 }}
+                            </span>
+                        </div>
+                    </div>
+                    {{ end }}
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-end">
+                                    <small>{{ .date }}</small>
+                                </div>
+                                <h5 class="card-title">{{ .title }}</h5>
+                                
+                                {{ if .companyUrl }}
+                                <a href="{{ .companyUrl }}" target="_blank">
+                                    <h6>
+                                    {{ .company }}
+                                    </h6>
+                                </a>
+                                {{ else }}
+                                {{ .company.name }}
+                                {{ end }}
+
+                                <div class="py-1 experience-content">
+                                    {{ .content | markdownify}}
+                                </div>
+
+                                {{ if .featuredLink.enable }}
+                                <div class="py-1">
+                                    <a href="{{ .featuredLink.url }}" class="btn">
+                                        {{ .featuredLink.name | default "Featured" }}
+                                    </a>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+{{ if .Site.Params.education.enable | default false }}
+<section id="education" class="py-5">
+    <div class="container">
+        <h3 class="text-center">{{ .Site.Params.education.title | default "Education" }}</h3>
+        <div class="row justify-content-center py-5">
+            {{ $indexMenu := .Site.Params.education.index }}
+            {{ range $index, $element := .Site.Params.education.items }}
+            <div class="col-12 p-0">
+                <div class="row row align-items-center justify-content-center m-1 mb-4">
+                    {{ if $indexMenu }}
+                    <div class="col-md-1 text-center me-2 p-0 d-none d-md-block">
+                        <div class="py-2">
+                            <span class="index shadow-lg">
+                                {{ add $index 1 }}
+                            </span>
+                        </div>
+                    </div>
+                    {{ end }}
+
+                    <div class="col-md-9">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="float-end">
+                                    <small>{{ .date }}</small>
+                                </div>
+                                <h5 class="card-title">{{ .title }}</h5>
+                                
+                                {{ if .school.url }}
+                                <a href="{{ .school.url }}" target="_blank">
+                                    <h6>
+                                    {{ .school.name }}
+                                    </h6>
+                                </a>
+                                {{ else }}
+                                {{ .school.name }}
+                                {{ end }}
+
+                                {{ if .GPA }}
+                                <div class="py-1">
+                                    GPA:
+                                    <i>
+                                        <small>{{ .GPA }}</small>
+                                    </i> 
+                                </div>
+                                {{ end }}
+                                <div class="py-1 education-content">
+                                    {{ .content | markdownify}}
+                                </div>
+
+                                {{ if .featuredLink.enable }}
+                                <div class="py-1">
+                                    <a href="{{ .featuredLink.url }}" class="btn">
+                                        {{ .featuredLink.name | default "Featured" }}
+                                    </a>
+                                </div>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}
+
+
+{{ if .Params.viewer | default true }}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var viewer = new Viewer(document.getElementById('list-page'), {
+            ...{{ .Params.viewerOptions }}
+        });
+    });
+</script>
+{{ end }}
+
+{{ end }}

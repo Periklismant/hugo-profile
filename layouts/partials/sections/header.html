@@ -83,18 +83,17 @@
                     </li>
                     {{ end }}
 
-                    {{ if and (.Site.Params.education.enable | default false) (not (.Site.Params.navbar.menus.disableEducation | default false)) }}
+                    {{ if and (.Site.Params.news.enable | default false) (not (.Site.Params.navbar.menus.disableAbout | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#education"
-                            aria-label="education">
-                            {{ .Site.Params.education.title | default "Education" }}
+                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#about" aria-label="about">
+                            {{ .Site.Params.news.title | default "News" }}
                         </a>
                     </li>
                     {{ end }}
 
                     {{ if and (.Site.Params.experience.enable | default false) (not (.Site.Params.navbar.menus.disableExperience | default false)) }}
                     <li class="nav-item navbar-text">
-                        <a class="nav-link" href="{{ .Site.BaseURL | relURL }}#experience"
+                        <a class="nav-link" href="experience"
                             aria-label="experience">
                             {{ .Site.Params.experience.title | default "Experience" }}
                         </a>
@@ -173,6 +172,7 @@
                         </a>
                     </li>
                     {{ end }}
+
 
                     {{ if and (.Site.Params.contact.enable | default false) (not (.Site.Params.navbar.menus.disableContact | default false)) }}
                     <li class="nav-item navbar-text">
