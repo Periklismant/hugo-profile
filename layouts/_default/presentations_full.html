@@ -1,5 +1,21 @@
+{{ define "head" }}
+<meta name="description" content="{{ .Title }} of {{ .Site.Title }}">
+<!-- <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/list.css" media="all"> -->
+{{ if .Params.viewer | default true }}
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/presentations.css">
 <link rel="stylesheet" href="{{ .Site.Params.staticPath }}/css/button.css">
+<link rel="stylesheet" href="{{ .Site.Params.staticPath }}/viewer/viewer.min.css">
+<script src="{{ .Site.Params.staticPath }}/viewer/viewer.min.js"></script>
+{{ end }}
+
+{{ end }}
+
+{{ define "title" }}
+{{.Title }} | {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+<link rel="stylesheet" href="{{.Site.Params.staticPath}}/css/presentations.css">
 {{ if .Site.Params.publications.enable | default false }}
 <section id="presentations" class="py-0 py-sm-5">
     <div class="container bg-transparent">
@@ -51,4 +67,6 @@
         });
     });
 </script>
+{{ end }}
+
 {{ end }}
