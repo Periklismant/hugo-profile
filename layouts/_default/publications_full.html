@@ -24,7 +24,7 @@
         {{ $prevDate := 0 }}
         {{ range $index, $element := .Site.Params.publications.items }}
         {{ $date := .date }}
-        {{ $authorNo := len .authors }}
+        {{ $authorNo := len (.authors | default (slice)) }}
         {{ if not (eq $date $prevDate) }}
             <h4>{{ $date }}</h4>
             {{ $prevDate = $date }}
