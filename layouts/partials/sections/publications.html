@@ -25,7 +25,7 @@
             {{ end }}
             <b>{{ .title }}</b>.
             <br>
-            In <em>{{ .venue }}</em>{{if .acronym}} ({{ .acronym }}){{ end }}. {{if or .volume .first_page }}{{ if .volume }}{{ .volume }}:{{ end }}{{if .first_page}}{{ .first_page }}&ndash;{{ .last_page }}{{ end }},{{ end }} {{ .date }}. 
+            In <em>{{ .venue }}</em>{{if .acronym}} ({{ .acronym }}){{ end }}. {{if or .volume .first_page }}{{ if .volume }}{{ .volume }}{{ end }}{{if .first_page}}:{{ .first_page }}&ndash;{{ .last_page }}{{ end }},{{ end }} {{ .date }}. 
             {{ if .pdf }}<a href="{{ .pdf }}" target="_blank" class="pub_button PDF">PDF</a>{{ end }}
             {{ if .slides }}<a href="{{ .slides }}" target="_blank" class="pub_button SLIDES">Slides</a>{{ end }}
             {{ if .video }}<a href="{{ .video }}" target="_blank" class="pub_button VIDEO">Video</a>{{ end }}
