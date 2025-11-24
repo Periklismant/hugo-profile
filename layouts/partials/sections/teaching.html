@@ -13,12 +13,30 @@
                 {{ $prevDate = $date }}
             {{ end }}
             <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
-            {{ .level }} on <b>{{ .title }}</b>.
+            <b>{{ .title }}.</b> {{ .place }}.
             {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
             </p>
         {{ end }}
     </div>
 </section>
 {{ end }}
-
-
+{{ if .Site.Params.teaching_assistance.enable | default false }}
+<section id="teaching_assistance" class="py-0 py-sm-5">
+    <div class="container bg-transparent px-md-4">
+        <h3 class="text-center">{{ .Site.Params.teaching_assistance.title | default "Teaching Assistant" }}</h3>
+        <br>
+        {{ $prevDate := 0 }}
+        {{ range .Site.Params.teaching_assistance.items }}
+            {{ $date := .date }}
+            {{ if not (eq $date $prevDate) }}
+                <h4>{{ $date }}</h4>
+                {{ $prevDate = $date }}
+            {{ end }}
+            <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
+            <b>{{ .title }}.</b> {{ .place }}.
+            {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
+            </p>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
