@@ -13,7 +13,7 @@
                 {{ $prevDate = $date }}
             {{ end }}
             <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
-            <b>{{ .title }}.</b> {{ .place }}.
+            <b>{{ .title }}.</b> {{ delimit .responsibilities.items ", " }}. <!-- {{ .place }}. -->
             {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
             </p>
         {{ end }}
@@ -33,7 +33,7 @@
                 {{ $prevDate = $date }}
             {{ end }}
             <p class="soft justify-content-center px-sm-5 px-md-5 px-lg-5">
-            <b>{{ .title }}.</b> {{ .place }}.
+            <b>{{ .title }}.</b> <!-- {{ .place }}. -->
             {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
             </p>
         {{ end }}
