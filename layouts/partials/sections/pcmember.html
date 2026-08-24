@@ -3,11 +3,20 @@
 {{ if .Site.Params.pcmember.enable | default false }}
 <section id="pcmember" class="py-0 py-sm-5">
     <div class="container bg-transparent px-md-4">
-        <h3 class="text-center">{{ .Site.Params.pcmember.title | default "PC Participation" }}</h3>
+        <h3 class="text-center">{{ .Site.Params.pcmember.title | default "Academic Service" }}</h3>
         <br>
-        {{ range .Site.Params.pcmember.items }}
+        <h4 class="text-center">{{ .Site.Params.pcmember.conferences.title | default "PC Participation" }}</h3>
+        {{ range .Site.Params.pcmember.conferences.items }}
         <p class="rdp justify-content-center px-sm-5 px-md-5 px-lg-5">
-        <b>{{ .title }}</b>: {{ .content }}
+        <b>{{ .title }}</b> <!-- : {{ .content }} -->
+        {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
+        </p>
+        {{ end }}
+        <br>
+        <h4 class="text-center">{{ .Site.Params.pcmember.journals.title | default "Journal Reviewer" }}</h3>
+        {{ range .Site.Params.pcmember.journals.items }}
+        <p class="rdp justify-content-center px-sm-5 px-md-5 px-lg-5">
+        <b>{{ .title }}</b> <!-- : {{ .content }} -->
         {{ if .link }}<a href="{{ .link }}" class="btn" target="_blank">View</a>{{ end }}
         </p>
         {{ end }}
